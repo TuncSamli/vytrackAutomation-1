@@ -1,0 +1,6 @@
+I have added new Driver utility class which we are gonna use instead of
+@BeforeMethod and @AfterMethod. Just call this method by its class name Driver.getDriver() and it is gonna
+create new driver and open up window for us. If you already have an existing driver then it is gonna return the same
+driver that you are working on.Also I have added closeDriver() method into this Driver class because we
+are gonna use it when we want to close our driver(window). Just call it by class name Drive.closeDriver() .
+Good luck!
