@@ -7,7 +7,6 @@ import com.vytrack.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -67,7 +66,6 @@ public class US_67 {
                 {ConfigurationReader.getProperty("usernameSalesManager4"), ConfigurationReader.getProperty("password")}
         };
     }
-
     @Test(dataProvider = "userTruckDriversProvider" )
     public void truckDriversTest(String username, String password) {
         //AC #1: Users should see three columns on the Vehicle Costs page.
@@ -88,6 +86,7 @@ public class US_67 {
         WebElement dateColumn = driver.findElement(By.xpath("//thead[@class='grid-header']//th[3]//span[.='Date']"));
         Assert.assertTrue(dateColumn.isDisplayed(), "Date column is not displayed on the Vehicle Costs page");
         //AC #2: users check the first checkbox to check all the Vehicle Costs
+        //There is no first check box on the user TruckDrivers
     }
 
 
