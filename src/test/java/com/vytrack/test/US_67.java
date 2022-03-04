@@ -1,11 +1,16 @@
 package com.vytrack.test;
 
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.VyTrack_Login;
 import com.vytrack.utilities.WebDriverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -59,6 +64,23 @@ public class US_67 {
                 {"usernameSalesManager3", "password"},
                 {"usernameSalesManager4", "password"}
         };
+    }
+
+    @Test(dataProvider = "userTruckDriversProvider" )
+    public void truckDriversTest(String username, String password){
+        //AC #1: Users should see three columns on the Vehicle Costs page.
+            //step1:
+        VyTrack_Login.login(driver, username, password);
+        WebElement fleetTabElm = driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"));
+        Assert.assertTrue(fleetTabElm.isDisplayed(), "Fleet tab is not displayed on the webpage after log in");
+            //step2:
+        fleetTabElm.click();
+            //step3:
+        WebElement vehicleCostsOption = driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[5]/a/span"));
+        vehicleCostsOption.click();
+
+        WebElement typeColumn = driver.findElement(By.xpath(""));
+        //AC #2: users check the first checkbox to check all the Vehicle Costs
     }
 
 
