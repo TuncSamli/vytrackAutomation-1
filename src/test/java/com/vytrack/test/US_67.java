@@ -51,6 +51,16 @@ public class US_67 {
 
     }
 
+    @DataProvider(name="userSalesManagerProvider")
+    public Object[][] provideData2(){
+        return new Object[][]{
+                {"usernameSalesManager1", "password"},
+                {"usernameSalesManager2", "password"},
+                {"usernameSalesManager3", "password"},
+                {"usernameSalesManager4", "password"}
+        };
+    }
+
 
 
 
