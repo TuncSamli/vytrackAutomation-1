@@ -9,9 +9,9 @@ import static com.vytrack.utilities.ConfigurationReader.getProperty;
 public class DP {
     @DataProvider(name="VyTrackCredentials")
     public Object[][] credentials(Method VY){
-        if (VY.getName().equals("")){
+        if (VY.getName().equals("AC1_OdoCheck")){
             return new Object[][]{{getProperty("usernameStoreManager4"),getProperty("password")},
-                    {getProperty("username2"), getProperty("password")},
+                    {getProperty("usernameStoreManager4"), getProperty("password")},
             };}else
             return new Object[][]{{getProperty("username"),getProperty("password")},
                     {getProperty("username2"), getProperty("password")},
