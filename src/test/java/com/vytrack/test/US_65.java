@@ -1,5 +1,6 @@
 package com.vytrack.test;
 
+import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,10 +31,8 @@ public class US_65 {
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
     public void AC1_OdoCheck(String username,String password){
         driver.findElement(By.id("prependedInput")).sendKeys(username);
-        driver.findElement(By.xpath("//input[@id='C']")).sendKeys(password);
-        driver.findElement(By.id("_submit")).click();
-
-
+        driver.findElement(By.id("prependedInput2")).sendKeys(password);
+        driver.findElement(By.xpath("//button[@id='_submit']")).click();
     }
 
 
