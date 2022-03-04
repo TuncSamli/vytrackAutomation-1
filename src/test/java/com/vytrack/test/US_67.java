@@ -25,12 +25,33 @@ public class US_67 {
         driver.quit();
     }
 
-    @DataProvider(name="userProvider")
+    @DataProvider(name="userTruckDriversProvider")
     public Object[][] provideData(){
         return new Object[][]{
                 {"usernameTruckDrivers1", "password"},
+                {"usernameTruckDrivers2", "password"},
+                {"usernameTruckDrivers3", "password"},
+                {"usernameTruckDrivers4", "password"},
+                {"usernameTruckDrivers5", "password"},
+                {"usernameTruckDrivers6", "password"},
+                {"usernameTruckDrivers7", "password"}
         };
     }
+
+    @DataProvider(name="userStoreManagerProvider")
+    public Object[][] provideData1(){
+        return new Object[][]{
+                {"usernameStoreManager1", "password"},
+                {"usernameStoreManager2", "password"},
+                {"usernameStoreManager3", "password"},
+                {"usernameStoreManager4", "password"},
+                {"usernameStoreManager5", "password"},
+                {"usernameStoreManager6", "password"},
+        };
+
+    }
+
+
 
 
 
