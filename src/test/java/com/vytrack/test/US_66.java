@@ -1,4 +1,4 @@
 package com.vytrack.test;
 
-public class Test {
+public class US_66 {
 }
