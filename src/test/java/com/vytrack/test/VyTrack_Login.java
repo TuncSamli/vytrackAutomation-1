@@ -12,6 +12,6 @@ public class VyTrack_Login {
         WebElement pass=driver.findElement(By.id("prependedInput2"));
         pass.clear();
         pass.sendKeys(password);
-        driver.findElement(By.xpath("//button[@id='_submit']")).click();
+        driver.findElement(By.id("_submit")).click();
     }
 }
