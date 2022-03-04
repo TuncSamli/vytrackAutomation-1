@@ -1,11 +1,12 @@
 package com.vytrack.utilities;
 
 /*
-In this class only general utility methods that are not related to some specific page.
+In this class only general utility methods that are NOT related to some specific page.
  */
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class BrowserUtils {
 
         }
     }
-
+@BeforeClass
 
     /*
     This method accepts 3 arguments.
