@@ -61,9 +61,8 @@ public class Driver {
     }
     public static void closeDriver(){
         if (driver != null){
-            driver.close();
-            }else{
-            System.out.println("You do not have a driver to quit");
+            driver.quit();
+            driver=null;
         }
     }
 }

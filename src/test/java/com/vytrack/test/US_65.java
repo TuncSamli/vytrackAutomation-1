@@ -11,15 +11,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.vytrack.utilities.ConfigurationReader.getProperty;
 import static com.vytrack.utilities.Driver.closeDriver;
 import static com.vytrack.utilities.Driver.getDriver;
 import static org.testng.Assert.assertEquals;
 
 public class US_65 extends DP {
+
+
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
     public void AC1_OdoCheck(String username,String password){
-        getDriver().get(ConfigurationReader.getProperty("env"));
-        BrowserUtils.sleep(2);
         VyTrack_Login.login(getDriver(),username,password);
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
@@ -37,7 +38,7 @@ public class US_65 extends DP {
 
     @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 2)
     public void AC2_OdoCheck(String username,String password){
-        getDriver().get(ConfigurationReader.getProperty("env"));
+        getDriver().get(getProperty("env"));
         VyTrack_Login.login(getDriver(),username,password);
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
@@ -48,7 +49,7 @@ public class US_65 extends DP {
     }
     @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 3)
     public void AC3_OdoCheckPage(String username,String password){
-        getDriver().get(ConfigurationReader.getProperty("env"));
+        getDriver().get(getProperty("env"));
         VyTrack_Login.login(getDriver(),username,password);
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());

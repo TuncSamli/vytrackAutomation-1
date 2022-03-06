@@ -27,10 +27,12 @@ public class US_66 {
         getDriver().findElement(By.xpath("//a[.='Accounts']/span")).click();
         BrowserUtils.sleep(2);
         getDriver().findElement(By.xpath("//a[@title='Filters']")).click();
-        List<WebElement>filterBtn=new ArrayList<>(getDriver().findElements(By.xpath("//span[@class='filter-items']/div")));
-        filterBtn.remove(filterBtn.size()-1);
+        List<WebElement>filterBtn=new ArrayList<>(getDriver().findElements(By.xpath("//div[contains(@class,'btn filter-criteria-selector')]")));
         List<String> actualBtnTexts=new ArrayList<>();
+        BrowserUtils.sleep(2);
         List<String>expected=new ArrayList<>(Arrays.asList("Account Name","Contact Name","Contact Email","Contact Phone","Owner","Business Unit","Created At","Updated At"));
+        BrowserUtils.sleep(2);
+
         for (WebElement functions : filterBtn) {
             actualBtnTexts.add(functions.getText().substring(0,functions.getText().length()-5));
         }
