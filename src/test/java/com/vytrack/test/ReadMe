@@ -1,6 +1,31 @@
+
+NEWEST UPDATE:
+I have added TestBase class which needs to be extended in your own classes in order to get inheritance for
+@BeforeMethod and @AfterMethod procedures. These Methods already includes driver setup and close diver.
+Because of this extension we are gonna use getDriver() in order to call driver (before we were creating
+Web Driver object and using it by calling 'driver.' but now we are gonna use getDriver(), this method is
+located under Utilities.Driver class which already creates driver object and does
+everything(even calls an 'env' which opens the env that we need to test)there everytime when we call it.
+P.S Dont forget to use VyTrack_Login class for quick logging in to the accounts.(Because TestBase class only includes
+Driver object creation, browser open steps. It only goes to the site that we have been provided.So, calling VyTrack_Login is mandatory.
+
+
+Enjoy!
+
+
+
+
+
+
+
+
+
+
+
+
+OLD UPDATE:
 I have added new Driver utility class which we are gonna use instead of
 @BeforeMethod and @AfterMethod. Just call this method by its class name Driver.getDriver() and it is gonna
 create new driver and open up window for us. If you already have an existing driver then it is gonna return the same
 driver that you are working on.Also I have added closeDriver() method into this Driver class because we
 are gonna use it when we want to close our driver(window). Just call it by class name Drive.closeDriver() .
-Good luck!
