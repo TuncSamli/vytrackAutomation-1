@@ -19,14 +19,15 @@ public class US_58_AutomationForAC1 {
     WebDriver driver;
 
     @BeforeMethod
-    public void  setUpMethod(){
+    public void setUpMethod() {
         driver = WebDriverFactory.getDriver(getProperty("browser"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(getProperty("env"));
     }
-    @DataProvider(name="provider")
-    public Object [][] dpMthd() {
+
+    @DataProvider(name = "provider")
+    public Object[][] dpMthd() {
         return new Object[][]{
                 {"usernameStoreManager1", "password"},
                 {"usernameStoreManager2", "password"},
@@ -44,26 +45,28 @@ public class US_58_AutomationForAC1 {
     }
 
     @Test(dataProvider = "provider")
-    public void VyLogin(String name,String password) {
-        VyTrack_Login.login(driver, getProperty(name),getProperty(password));
-       driver.findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li[1]")).click();
+    public void VyLogin(String name, String password) {
+        VyTrack_Login.login(driver, getProperty(name), getProperty(password));
+        driver.findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li[1]")).click();
         BrowserUtils.sleep(2);
         driver.findElement(By.xpath("//span[text()='Vehicle Contracts']")).click();
         BrowserUtils.sleep(2);
-        String actualTitle= driver.getTitle();
+        String actualTitle = driver.getTitle();
         String expectedTitle = "All - Vehicle Contract - Entities - System - Car - Entities - System";
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
         BrowserUtils.sleep(3);
-        String expectedUrl="https://qa1.vytrack.com/entity/Extend_Entity_VehicleContract";
+        String expectedUrl = "https://qa1.vytrack.com/entity/Extend_Entity_VehicleContract";
         String actualUrl = driver.getCurrentUrl();
-        Assert.assertEquals(actualUrl,expectedUrl);
+        Assert.assertEquals(actualUrl, expectedUrl);
         System.out.println("Current URL is: " + actualUrl);
-        System.out.println("Current title has been verified and is: " +actualTitle);
+        System.out.println("Current title has been verified and is: " + actualTitle);
 
     }
-//@AfterMethod
-//    public  void closeout(){
-  //      driver.close();
+
+    @AfterMethod
+    public void closeout() {
+        driver.close();
+    }
 }
 
 
