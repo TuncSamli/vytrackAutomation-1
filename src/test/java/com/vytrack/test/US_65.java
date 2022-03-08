@@ -20,40 +20,56 @@ public class US_65 extends DP {
 
 
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
-    public void AC1_OdoCheck(String username,String password){
-        VyTrack_Login.login(getDriver(),username,password);
-        BrowserUtils.sleep(2);
+    public void AC1_OdoCheckStoreManager(String username,String password){
+        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        BrowserUtils.sleep(1);
         Actions action=new Actions(getDriver());
-        BrowserUtils.sleep(2);
-        action.moveToElement(getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li"))).click().perform();
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
+        action.moveToElement(getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li"))).perform();
+        BrowserUtils.sleep(1);
         getDriver().findElement(By.xpath("//span[.='Vehicle Odometer']")).click();
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
         WebElement errorMessage=getDriver().findElement(By.xpath("//*[@id=\"flash-messages\"]//div[2]/div"));
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
+        String actual=errorMessage.getText();
+        String expected="You do not have permission to perform this action.";
+        assertEquals(actual,expected);
+    }
+    @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 2)
+    public void AC1_OdoCheckSalesManager(String username,String password){
+        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        BrowserUtils.sleep(1);
+        Actions action=new Actions(getDriver());
+        BrowserUtils.sleep(1);
+        action.moveToElement(getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li"))).perform();
+        BrowserUtils.sleep(1);
+        getDriver().findElement(By.xpath("//span[.='Vehicle Odometer']")).click();
+        BrowserUtils.sleep(1);
+        WebElement errorMessage=getDriver().findElement(By.xpath("//*[@id=\"flash-messages\"]//div[2]/div"));
+        BrowserUtils.sleep(1);
         String actual=errorMessage.getText();
         String expected="You do not have permission to perform this action.";
         assertEquals(actual,expected);
     }
 
-    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 2)
-    public void AC2_OdoCheck(String username,String password){
+    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 3)
+    public void AC2_OdoCheckTruckDriver(String username,String password){
         getDriver().get(getProperty("env"));
-        VyTrack_Login.login(getDriver(),username,password);
+        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
-        action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).click().perform();
+        action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).perform();
         getDriver().findElement(By.xpath("//span[.='Vehicle Odometer']")).click();
         BrowserUtils.sleep(2);
         Assert.assertTrue(getDriver().findElement(By.xpath("//input[@value='1']")).isDisplayed());
     }
-    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 3)
-    public void AC3_OdoCheckPage(String username,String password){
+    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 4)
+    public void AC3_OdoCheckPageTruckDriver(String username,String password){
         getDriver().get(getProperty("env"));
-        VyTrack_Login.login(getDriver(),username,password);
+        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
-        action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).click().perform();
+        action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).perform();
         getDriver().findElement(By.xpath("//span[.='Vehicle Odometer']")).click();
         BrowserUtils.sleep(2);
         String expected="25";
