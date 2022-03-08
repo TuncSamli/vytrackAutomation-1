@@ -1,9 +1,11 @@
 package com.vytrack.test;
 
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VyTrack_Login;
-import com.vytrack.utilities.WebDriverFactory;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.DeviceRotation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -11,21 +13,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import java.util.concurrent.TimeUnit;
+
 
 import static com.vytrack.utilities.ConfigurationReader.getProperty;
+import static com.vytrack.utilities.Driver.closeDriver;
+import static com.vytrack.utilities.Driver.getDriver;
 
 public class US_58_AutomationForAC1 {
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        driver = WebDriverFactory.getDriver(getProperty("browser"));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(getProperty("env"));
-    }
-
     @DataProvider(name = "provider")
     public Object[][] dpMthd() {
         return new Object[][]{
@@ -39,34 +33,29 @@ public class US_58_AutomationForAC1 {
                 {"usernameSalesManager2", "password"},
                 {"usernameSalesManager3", "password"},
                 {"usernameSalesManager4", "password"},
-
-
         };
     }
 
     @Test(dataProvider = "provider")
-    public void VyLogin(String name, String password) {
-        VyTrack_Login.login(driver, getProperty(name), getProperty(password));
-        driver.findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li[1]")).click();
+    public void VyLogin(String username, String password) {
+        VyTrack_Login.login(getDriver(), getProperty(username),getProperty(password));
+        getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li[1]")).click();
         BrowserUtils.sleep(2);
-        driver.findElement(By.xpath("//span[text()='Vehicle Contracts']")).click();
+        getDriver().findElement(By.xpath("//span[text()='Vehicle Contracts']")).click();
         BrowserUtils.sleep(2);
-        String actualTitle = driver.getTitle();
+        String actualTitle = getDriver().getTitle();
         String expectedTitle = "All - Vehicle Contract - Entities - System - Car - Entities - System";
         Assert.assertEquals(actualTitle, expectedTitle);
         BrowserUtils.sleep(3);
         String expectedUrl = "https://qa1.vytrack.com/entity/Extend_Entity_VehicleContract";
-        String actualUrl = driver.getCurrentUrl();
-        Assert.assertEquals(actualUrl, expectedUrl);
-        System.out.println("Current URL is: " + actualUrl);
+        String actualUrl = getDriver().getCurrentUrl();
+         Assert.assertEquals(actualUrl, expectedUrl);
+         System.out.println("Current URL is: " + actualUrl);
+
         System.out.println("Current title has been verified and is: " + actualTitle);
 
     }
 
-    @AfterMethod
-    public void closeout() {
-        driver.close();
-    }
 }
 
 

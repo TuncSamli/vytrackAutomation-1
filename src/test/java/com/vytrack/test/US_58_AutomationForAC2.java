@@ -1,8 +1,9 @@
 package com.vytrack.test;
 
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VyTrack_Login;
-import com.vytrack.utilities.WebDriverFactory;
+
 import com.vytrack.utilities.WebTableUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,18 +18,9 @@ import java.security.PublicKey;
 import java.util.concurrent.TimeUnit;
 
 import static com.vytrack.utilities.ConfigurationReader.getProperty;
+import static com.vytrack.utilities.Driver.getDriver;
 
-public class US_58_AutomationForAC2 {
-    WebDriver driver;
-
-
-    @BeforeMethod
-    public void setUpMethod() {
-        driver = WebDriverFactory.getDriver(getProperty("browser"));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(getProperty("env"));
-    }
+public class US_58_AutomationForAC2 extends TestBase{
 
     @DataProvider(name = "provider")
     public Object[][] dpMthd() {
@@ -45,24 +37,19 @@ public class US_58_AutomationForAC2 {
 
     @Test(dataProvider = "provider")
     public void VyLogin(String name, String password) {
-        VyTrack_Login.login(driver, getProperty(name), getProperty(password));
-        driver.findElement(By.xpath("//li[@class='dropdown dropdown-level-1'][1]")).click();
-        WebElement find = driver.findElement(By.xpath("//li[@class='dropdown dropdown-level-1'][1]//*[text()='Vehicle Contracts']"));
+        VyTrack_Login.login(getDriver(), getProperty(name), getProperty(password));
+        getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1'][1]")).click();
+        WebElement find = getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1'][1]//*[text()='Vehicle Contracts']"));
         BrowserUtils.sleep(2);
         find.click();
         BrowserUtils.sleep(2);
-        WebElement errorText = driver.findElement(By.xpath("//*[text()='You do not have permission to perform this action.']"));
+        WebElement errorText = getDriver().findElement(By.xpath("//*[text()='You do not have permission to perform this action.']"));
         System.out.println(errorText.getText());
         Assert.assertTrue(errorText.isDisplayed());
 
 
     }
-
-    @AfterMethod
-    public void closeut() {
-        driver.close();
-    }
 }
-//
+
 
 
