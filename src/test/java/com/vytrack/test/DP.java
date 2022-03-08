@@ -19,7 +19,7 @@ public class DP {
     public Object[][] credentials(Method VY) {
         if (VY.getName().equals("AC1_OdoCheck")) {
             return new Object[][]{{getProperty("usernameStoreManager4"), getProperty("password")},
-                    {getProperty("usernameStoreManager5"), getProperty("password")},
+                    {getProperty("usernameStoreManager3"), getProperty("password")},
             };
         } else
             return new Object[][]{{getProperty("usernameTruckDrivers5"), getProperty("password")},

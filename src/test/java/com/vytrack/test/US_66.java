@@ -10,13 +10,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.vytrack.utilities.Driver.getDriver;
 
-public class US_66 {
+public class US_66 extends DP{
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
     public void AC1_OdoCheck(String username,String password) {
-        getDriver().get(ConfigurationReader.getProperty("env"));
         BrowserUtils.sleep(2);
         VyTrack_Login.login(getDriver(),username,password);
         BrowserUtils.sleep(2);
@@ -32,10 +32,11 @@ public class US_66 {
         BrowserUtils.sleep(2);
         List<String>expected=new ArrayList<>(Arrays.asList("Account Name","Contact Name","Contact Email","Contact Phone","Owner","Business Unit","Created At","Updated At"));
         BrowserUtils.sleep(2);
-
-        for (WebElement functions : filterBtn) {
-            actualBtnTexts.add(functions.getText().substring(0,functions.getText().length()-5));
-        }
+        actualBtnTexts=filterBtn.stream().map(p->p.getText().substring(0,p.getText().length()-5)).collect(Collectors.toList());
+//        for (WebElement functions : filterBtn) {
+//            actualBtnTexts.add(functions.getText().substring(0,functions.getText().length()-5));
+//        }
+        BrowserUtils.sleep(2);
         Assert.assertEquals(actualBtnTexts,expected);
 
     }
