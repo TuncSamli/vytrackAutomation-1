@@ -18,18 +18,18 @@ public class DP {
     @DataProvider(name = "VyTrackCredentials")
     public Object[][] credentials(Method VY) {
         if (VY.getName().equals("AC1_OdoCheckStoreManager")) {
-            return new Object[][]{{"usernameStoreManager1", "password"},
-                    {"usernameStoreManager2", "password"},
-                    {"usernameStoreManager3","password"},
-                    {"usernameStoreManager4","password"},
-                    {"usernameStoreManager5","password"},
-                    {"usernameStoreManager6","password"},
+            return new Object[][]{{"usernameStoreManager1", "password","You do not have permission to perform this action."},
+                    {"usernameStoreManager2", "password","You do not have permission to perform this action."},
+                    {"usernameStoreManager3","password","You do not have permission to perform this action."},
+                    {"usernameStoreManager4","password","You do not have permission to perform this action."},
+                    {"usernameStoreManager5","password","You do not have permission to perform this action."},
+                    {"usernameStoreManager6","password","You do not have permission to perform this action."},
             };
         } else if(VY.getName().equals("AC1_OdoCheckSalesManager")){
-            return new Object[][]{{"usernameSalesManager1","password"},
-                    {"usernameSalesManager2","password"},
-                    {"usernameSalesManager3","password"},
-                    {"usernameSalesManager4","password"},
+            return new Object[][]{{"usernameSalesManager1","password","You do not have permission to perform this action."},
+                    {"usernameSalesManager2","password","You do not have permission to perform this action."},
+                    {"usernameSalesManager3","password","You do not have permission to perform this action."},
+                    {"usernameSalesManager4","password","You do not have permission to perform this action."},
 
         };}else
             return new Object[][]{{"usernameTruckDrivers1", "password"},
