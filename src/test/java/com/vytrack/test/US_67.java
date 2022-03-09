@@ -20,25 +20,25 @@ public class US_67 extends TestBase {
     @DataProvider(name="userTruckDriversProvider")
     public Object[][] provideData(){
         return new Object[][]{
-                {ConfigurationReader.getProperty("usernameTruckDrivers1"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers2"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers3"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers4"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers5"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers6"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameTruckDrivers7"), ConfigurationReader.getProperty("password")}
+                {"usernameTruckDrivers1", "password"},
+                {"usernameTruckDrivers2", "password"},
+                {"usernameTruckDrivers3", "password"},
+                {"usernameTruckDrivers4", "password"},
+                {"usernameTruckDrivers5", "password"},
+                {"usernameTruckDrivers6", "password"},
+                {"usernameTruckDrivers7", "password"}
         };
     }
 
     @DataProvider(name="userStoreManagerProvider")
     public Object[][] provideData1(){
         return new Object[][]{
-                {ConfigurationReader.getProperty("usernameStoreManager1"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameStoreManager2"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameStoreManager3"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameStoreManager4"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameStoreManager5"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameStoreManager6"), ConfigurationReader.getProperty("password")}
+                {"usernameStoreManager1","password"},
+                {"usernameStoreManager2","password"},
+                {"usernameStoreManager3","password"},
+                {"usernameStoreManager4","password"},
+                {"usernameStoreManager5","password"},
+                {"usernameStoreManager6","password"}
         };
 
     }
@@ -46,10 +46,10 @@ public class US_67 extends TestBase {
     @DataProvider(name="userSalesManagerProvider")
     public Object[][] provideData2(){
         return new Object[][]{
-                {ConfigurationReader.getProperty("usernameSalesManager1"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameSalesManager2"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameSalesManager3"), ConfigurationReader.getProperty("password")},
-                {ConfigurationReader.getProperty("usernameSalesManager4"), ConfigurationReader.getProperty("password")}
+                {"usernameSalesManager1","password"},
+                {"usernameSalesManager2","password"},
+                {"usernameSalesManager3","password"},
+                {"usernameSalesManager4","password"}
         };
     }
 
@@ -57,17 +57,18 @@ public class US_67 extends TestBase {
     public void truckDriversTest(String username, String password) {
         //AC #1: Users should see three columns on the Vehicle Costs page.
             //step1:
-        VyTrack_Login.login(Driver.getDriver(), username, password);
+        VyTrack_Login.login(Driver.getDriver(),ConfigurationReader.getProperty(username) , ConfigurationReader.getProperty(password));
         BrowserUtils.sleep(2);
         Actions actions = new Actions(Driver.getDriver());
         WebElement fleetTabElm = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"));
         actions.moveToElement(fleetTabElm).perform();
         Assert.assertTrue(fleetTabElm.isDisplayed(), "Fleet tab is not displayed on the webpage after log in");
             //step2:
-        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(2);
         fleetTabElm.click();
             //step3:
         WebElement vehicleCostsOption = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[5]/a/span"));
+        BrowserUtils.sleep(2);
         vehicleCostsOption.click();
         WebElement typeColumn = Driver.getDriver().findElement(By.xpath("//thead[@class='grid-header']//th[1]//span[.='Type']"));
         Assert.assertTrue(typeColumn.isDisplayed(), "Type column is not displayed on the Vehicle Costs page");
@@ -92,17 +93,18 @@ public class US_67 extends TestBase {
     public void storeManagerTest(String username, String password){
         //AC #1: Users should see three columns on the Vehicle Costs page.
             //step1:
-        VyTrack_Login.login(Driver.getDriver(), username, password);
+        VyTrack_Login.login(Driver.getDriver(),ConfigurationReader.getProperty(username) , ConfigurationReader.getProperty(password));
         BrowserUtils.sleep(2);
         Actions actions = new Actions(Driver.getDriver());
         WebElement fleetTabElm = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span"));
         actions.moveToElement(fleetTabElm).perform();
         Assert.assertTrue(fleetTabElm.isDisplayed(), "Fleet tab is not displayed on the webpage after log in");
             //step2:
-        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(2);
         fleetTabElm.click();
             //step3:
         WebElement vehicleCostsOption = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[5]/a/span"));
+        BrowserUtils.sleep(2);
         vehicleCostsOption.click();
         WebElement typeColumn = Driver.getDriver().findElement(By.xpath("//thead[@class='grid-header']//th[2]//span[.='Type']"));
         Assert.assertTrue(typeColumn.isDisplayed(), "Type column is not displayed on the Vehicle Costs page");
@@ -123,17 +125,18 @@ public class US_67 extends TestBase {
     public void salesManagerTest(String username, String password){
         //AC #1: Users should see three columns on the Vehicle Costs page.
         //step1:
-        VyTrack_Login.login(Driver.getDriver(), username, password);
+        VyTrack_Login.login(Driver.getDriver(),ConfigurationReader.getProperty(username) , ConfigurationReader.getProperty(password));
         BrowserUtils.sleep(2);
         Actions actions = new Actions(Driver.getDriver());
         WebElement fleetTabElm = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span"));
         actions.moveToElement(fleetTabElm).perform();
         Assert.assertTrue(fleetTabElm.isDisplayed(), "Fleet tab is not displayed on the webpage after log in");
         //step2:
-        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(2);
         fleetTabElm.click();
         //step3:
         WebElement vehicleCostsOption = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[5]/a/span"));
+        BrowserUtils.sleep(2);
         vehicleCostsOption.click();
         WebElement typeColumn = Driver.getDriver().findElement(By.xpath("//thead[@class='grid-header']//th[1]//span[.='Type']"));
         Assert.assertTrue(typeColumn.isDisplayed(), "Type column is not displayed on the Vehicle Costs page");
