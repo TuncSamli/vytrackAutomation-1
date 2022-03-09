@@ -1,6 +1,7 @@
 package com.vytrack.test;
 
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VyTrack_Login;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -48,12 +49,12 @@ public class US_62_AC1 extends TestBase {
         BrowserUtils.sleep(5);
 
         WebElement repeatEveryBox = getDriver().findElement(By.xpath("//div[@class='controls recurrence-subview-control__items']//label/input[3]"));
-        String expectedRepeatNumber ="1";
-        String actualValue=repeatEveryBox.getAttribute("value");
+        String expectedRepeatNumber = "1";
+        String actualValue = repeatEveryBox.getAttribute("value");
 
-        Assert.assertEquals(actualValue,expectedRepeatNumber);
+        Assert.assertEquals(actualValue, expectedRepeatNumber);
 
-
+    }
 
 
 
@@ -80,4 +81,6 @@ public class US_62_AC1 extends TestBase {
 
 
 
-}
+
+
+
