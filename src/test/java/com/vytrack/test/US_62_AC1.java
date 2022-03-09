@@ -47,23 +47,18 @@ public class US_62_AC1 extends TestBase {
         getDriver().findElement(By.xpath(" //input[@data-name='recurrence-repeat']")).click();
         BrowserUtils.sleep(5);
 
-
+        WebElement repeatEveryBox = getDriver().findElement(By.xpath("//div[@class='controls recurrence-subview-control__items']//label/input[3]"));
         String expectedRepeatNumber ="1";
-         // WebElement repeatEveryBox = getDriver().findElement(By.xpath("//input[@data-validation='{\"NotBlank\":{},\"Number\":{\"min\":1,\"max\":99},\"Type\":{\"type\":\"integer\"}}']"));
-         WebElement repeatEveryBox = getDriver().findElement(By.xpath("//div[@class='controls recurrence-subview-control__items']/div/label/input[3]"));
+        String actualValue=repeatEveryBox.getAttribute("value");
 
-        System.out.println("expectedRepeatNumber = " + expectedRepeatNumber);
+        Assert.assertEquals(actualValue,expectedRepeatNumber);
 
 
-        //
 
-        String actualRepeat = repeatEveryBox.getText();
 
-        System.out.println("actualRepeat = " + actualRepeat);
 
-        Assert.assertEquals(actualRepeat,expectedRepeatNumber);
 
-/*
+        /*
         //downcast the driver to access TakesScreenshot method
         TakesScreenshot ts = (TakesScreenshot) driver;
 
