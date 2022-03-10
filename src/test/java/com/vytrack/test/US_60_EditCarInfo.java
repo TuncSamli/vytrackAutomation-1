@@ -24,8 +24,8 @@ public class US_60_EditCarInfo extends TestBase {
     public Object[][] credentials() {
         return new Object[][]{
                 {"user"+ faker.number().numberBetween(191,197), "UserUser123"},//user191 --- user197
-                {"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"}, //storemanager67  ---  storemanager72
-               /* {"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
+                /* {"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"}, //storemanager67  ---  storemanager72
+              {"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
 
     }
 
@@ -51,16 +51,14 @@ public class US_60_EditCarInfo extends TestBase {
 
         List<WebElement> dots = Driver.getDriver().findElements(By.xpath("//a[.='...']"));
 
-        WebElement deleteBtn = null;
-        WebElement editBtn = null;
-        WebElement viewBtn = null;
-
         for (WebElement dot : dots) {
-            dot.click();
+            js.executeScript("arguments[0].scrollIntoView(true);", dot);
+            BrowserUtils.sleep(5);
+            actions.moveToElement(dot).pause(1000).click().perform();
 
-            deleteBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[3]//a"));
-            editBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[2]//a"));
-            viewBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[1]//a"));
+            WebElement deleteBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[3]//a"));
+            WebElement editBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[2]//a"));
+            WebElement viewBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[1]//a"));
 
             String delete = deleteBtn.getAttribute("title");
             String edit = editBtn.getAttribute("title");
@@ -73,9 +71,8 @@ public class US_60_EditCarInfo extends TestBase {
             Assert.assertEquals(delete, expectedDelete);
             Assert.assertEquals(edit, expectedEdit);
             Assert.assertEquals(view, expectedView);
-            WebElement scrollArea = Driver.getDriver().findElement(By.xpath("//div[@class='other-scroll-container']"));
-            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", scrollArea);
-            BrowserUtils.sleep(1);
+
+
         }
 
 
