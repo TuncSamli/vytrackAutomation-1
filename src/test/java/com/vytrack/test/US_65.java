@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import static com.vytrack.utilities.ConfigurationReader.getProperty;
 import static com.vytrack.utilities.Driver.closeDriver;
 import static com.vytrack.utilities.Driver.getDriver;
+import static com.vytrack.utilities.VytrackUtils.waitTillLoaderMaskDisappear;
 import static org.testng.Assert.assertEquals;
 
 public class US_65 extends TestBase {
@@ -22,7 +23,7 @@ public class US_65 extends TestBase {
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 1)
     public void AC1_OdoCheckStoreManager(String username,String password){
         VytrackUtils.login(getProperty(username),getProperty(password));
-        BrowserUtils.sleep(1);
+        waitTillLoaderMaskDisappear();
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(1);
         action.moveToElement(getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li"))).perform();

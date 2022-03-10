@@ -38,7 +38,7 @@ public class US_66 extends TestBase{
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 2)
     public void AC1_OdoCheckSalesManager(String username,String password) {
         VytrackUtils.login(getProperty(username),getProperty(password));
-        BrowserUtils.sleep(2);
+        VytrackUtils.waitTillLoaderMaskDisappear();
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(2);
         action.moveToElement(getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1 first']/following-sibling::li[2]"))).click().perform();
