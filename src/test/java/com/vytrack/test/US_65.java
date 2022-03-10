@@ -16,7 +16,7 @@ import static com.vytrack.utilities.Driver.closeDriver;
 import static com.vytrack.utilities.Driver.getDriver;
 import static org.testng.Assert.assertEquals;
 
-public class US_65 extends DP {
+public class US_65 extends TestBase {
 
 
     @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 1)
