@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class US_57 extends TestBase {
+public class US_57 extends TestBase{
 
 
     @DataProvider(name = "userTruckDriversProvider")
@@ -52,28 +52,35 @@ public class US_57 extends TestBase {
     }
 
 
-@Test(dataProvider = "userTruckDriversProvider")
+    @Test(dataProvider = "userTruckDriversProvider")
     public void truckDriverTest (String username,String password){
       /*  AC1:when users click click the “Learn how to use this space”
     link on the homepage, users should see:
     “How To Use Pinbar” and
     “Use pin icon on the right top corner of the page to create fast
     access link in the pinbar.”*/
-    VyTrack_Login.login(Driver.getDriver(),username,password);
-    BrowserUtils.sleep(5);
-    WebElement text = Driver.getDriver().findElement(By.xpath("//a[.='Learn how to use this space']"));
-    text.click();
-    BrowserUtils.sleep(5);
-    WebElement textAfterClick1 = Driver.getDriver().findElement(By.xpath("//h3[.='How To Use Pinbar']"));
-    WebElement textAfterClick2 = Driver.getDriver().findElement(By.xpath("//p[1]"));
-   // System.out.println(textAfterClick1.getText());
-   // System.out.println(textAfterClick2.getText());
-    Assert.assertEquals(textAfterClick1.getText(),"How To Use Pinbar");
-    Assert.assertEquals(textAfterClick2.getText(),
-            "Use pin icon on the right top corner of page to create fast access link in the pinbar.");
+        VyTrack_Login.login(Driver.getDriver(),username,password);
+        BrowserUtils.sleep(5);
+        WebElement text = Driver.getDriver().findElement(By.xpath("//a[.='Learn how to use this space']"));
+        text.click();
+        BrowserUtils.sleep(5);
+        WebElement textAfterClick1 = Driver.getDriver().findElement(By.xpath("//h3[.='How To Use Pinbar']"));
+        WebElement textAfterClick2 = Driver.getDriver().findElement(By.xpath("//p[1]"));
+        // System.out.println(textAfterClick1.getText());
+        // System.out.println(textAfterClick2.getText());
+        Assert.assertEquals(textAfterClick1.getText(),"How To Use Pinbar");
+        Assert.assertEquals(textAfterClick2.getText(),
+                "Use pin icon on the right top corner of page to create fast access link in the pinbar.");
 
-}
 
+
+
+
+
+
+
+
+    }
 
 
 
