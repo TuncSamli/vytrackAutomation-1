@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import static com.vytrack.utilities.ConfigurationReader.getProperty;
 import static com.vytrack.utilities.Driver.getDriver;
 
-
 public class US_62_Tunc extends TestBase {
     @DataProvider(name = "provider")
     public Object[][] credentialMethod() {
