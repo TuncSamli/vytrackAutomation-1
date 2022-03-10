@@ -81,12 +81,17 @@ Expected source:
 /bundles/oronavigation/images/pinbar-location.jp
  */
 
+WebElement picture = Driver.getDriver().findElement(By.xpath("//img[@src='/bundles/oronavigation/images/pinbar-location.jpg']"));
+        String expected = "/bundles/oronavigation/images/pinbar-location.jp";
+        String actual = picture.getAttribute("src");
+        Assert.assertTrue(actual.contains(expected));
+        Assert.assertTrue(picture.isDisplayed());
 
 
 
 
 
-
+}
 
 
 
@@ -122,4 +127,4 @@ Expected source:
 
 
 
-}
+
