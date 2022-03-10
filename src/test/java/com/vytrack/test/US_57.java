@@ -74,6 +74,21 @@ public class US_57 extends TestBase{
 
 
 
+/*
+AC2: users should see an image on the page.
+[in automation testing, just verify the image source.]
+Expected source:
+/bundles/oronavigation/images/pinbar-location.jp
+ */
+
+
+
+
+
+
+
+
+
 
 
 
@@ -81,7 +96,6 @@ public class US_57 extends TestBase{
 
 
     }
-
 
 
 
