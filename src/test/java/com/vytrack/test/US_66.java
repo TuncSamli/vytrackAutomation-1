@@ -1,8 +1,7 @@
 package com.vytrack.test;
 
 import com.vytrack.utilities.BrowserUtils;
-import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.VyTrack_Login;
+import com.vytrack.utilities.VytrackUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,10 +14,10 @@ import java.util.stream.Collectors;
 import static com.vytrack.utilities.ConfigurationReader.getProperty;
 import static com.vytrack.utilities.Driver.getDriver;
 
-public class US_66 extends DP{
-    @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
+public class US_66 extends TestBase{
+    @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 1)
     public void AC1_OdoCheckStoreManager(String username,String password) {
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(2);
@@ -36,9 +35,9 @@ public class US_66 extends DP{
         BrowserUtils.sleep(2);
         Assert.assertEquals(actualBtnTexts,expected);
     }
-    @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 2)
+    @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 2)
     public void AC1_OdoCheckSalesManager(String username,String password) {
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(2);

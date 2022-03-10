@@ -2,7 +2,7 @@ package com.vytrack.test;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
-import com.vytrack.utilities.VyTrack_Login;
+import com.vytrack.utilities.VytrackUtils;
 import org.apache.hc.core5.util.Asserts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,9 +19,9 @@ import static org.testng.Assert.assertEquals;
 public class US_65 extends DP {
 
 
-    @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 1)
+    @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 1)
     public void AC1_OdoCheckStoreManager(String username,String password){
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(1);
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(1);
@@ -35,9 +35,9 @@ public class US_65 extends DP {
         String expected="You do not have permission to perform this action.";
         assertEquals(actual,expected);
     }
-    @Test(dataProvider="VyTrackCredentials",dataProviderClass = DP.class,priority = 2)
+    @Test(dataProvider="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 2)
     public void AC1_OdoCheckSalesManager(String username,String password){
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(1);
         Actions action=new Actions(getDriver());
         BrowserUtils.sleep(1);
@@ -52,10 +52,10 @@ public class US_65 extends DP {
         assertEquals(actual,expected);
     }
 
-    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 3)
+    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 3)
     public void AC2_OdoCheckTruckDriver(String username,String password){
         getDriver().get(getProperty("env"));
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
         action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).perform();
@@ -63,10 +63,10 @@ public class US_65 extends DP {
         BrowserUtils.sleep(2);
         Assert.assertTrue(getDriver().findElement(By.xpath("//input[@value='1']")).isDisplayed());
     }
-    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = DP.class,priority = 4)
+    @Test(dataProvider ="VyTrackCredentials",dataProviderClass = TestBase.class,priority = 4)
     public void AC3_OdoCheckPageTruckDriver(String username,String password){
         getDriver().get(getProperty("env"));
-        VyTrack_Login.login(getDriver(),getProperty(username),getProperty(password));
+        VytrackUtils.login(getProperty(username),getProperty(password));
         BrowserUtils.sleep(2);
         Actions action=new Actions(getDriver());
         action.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"))).perform();

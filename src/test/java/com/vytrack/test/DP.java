@@ -12,11 +12,11 @@ public class DP {
         Driver.getDriver().get(getProperty("env"));
     }
     @AfterMethod
-    public void tearDown(){
+    public static void tearDown(){
         Driver.closeDriver();
     }
     @DataProvider(name = "VyTrackCredentials")
-    public Object[][] credentials(Method VY) {
+    public static Object[][] credentials(Method VY) {
         if (VY.getName().equals("AC1_OdoCheckStoreManager")) {
             return new Object[][]{{"usernameStoreManager1", "password","You do not have permission to perform this action."},
                     {"usernameStoreManager2", "password","You do not have permission to perform this action."},
