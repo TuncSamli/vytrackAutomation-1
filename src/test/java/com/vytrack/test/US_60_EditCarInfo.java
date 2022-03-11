@@ -3,7 +3,7 @@ package com.vytrack.test;
 import com.github.javafaker.Faker;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
-import com.vytrack.utilities.VyTrack_Login;
+import com.vytrack.utilities.VytrackUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
 public class US_60_EditCarInfo extends TestBase {
 
     Faker faker = new Faker();
@@ -23,7 +22,7 @@ public class US_60_EditCarInfo extends TestBase {
     @DataProvider(name = "US-60_Credentials")
     public Object[][] credentials() {
         return new Object[][]{
-                {"user"+ faker.number().numberBetween(191,197), "UserUser123"},//user191 --- user197
+                {"user" + faker.number().numberBetween(191, 197), "UserUser123"},//user191 --- user197
                 /* {"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"}, //storemanager67  ---  storemanager72
               {"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
 
@@ -32,7 +31,7 @@ public class US_60_EditCarInfo extends TestBase {
     @Test(dataProvider = "US-60_Credentials")
     public void edit_car_info_test(String usernames, String passwords) {
 
-        VyTrack_Login.login(Driver.getDriver(), usernames, passwords); //it's for login to homepage
+        VytrackUtils.login(usernames, passwords); //it's for login to homepage
         BrowserUtils.sleep(2);
         //1. Find a Fleet tab and hover on it
 
