@@ -12,9 +12,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,9 +26,9 @@ public class US_60_EditCarInfo extends TestBase {
     @DataProvider(name = "US-60_Credentials")
     public Object[][] credentials() {
         return new Object[][]{
-                 {"user" + faker.number().numberBetween(191, 197), "UserUser123"},//user191 --- user197
-               /*{"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"},//storemanager67  ---  storemanager72
-               /*{"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
+                {"user" + faker.number().numberBetween(191, 197), "UserUser123"},//user191 --- user197
+                /*  {"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"},*///storemanager67  ---  storemanager72
+                  /*{"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
 
     }
 
