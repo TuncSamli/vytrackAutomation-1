@@ -13,7 +13,8 @@ public class Driver {
     Creating a private constructor, so we are closing
     access to the object of this class from outside the class
      */
-    private Driver(){}
+    private Driver() {
+    }
 
     /*
     We make WebDriver private, because we want to close access from outside the class.
@@ -24,9 +25,9 @@ public class Driver {
     /*
     Create a re-usable utility method which will return same driver instance when we call it
      */
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
 
-        if (driver == null){
+        if (driver == null) {
 
             /*
             We read our browserType from configuration.properties.
@@ -39,7 +40,7 @@ public class Driver {
                 Depending on the browserType that will be return from configuration.properties file
                 switch statement will determine the case, and open the matching browser
             */
-            switch (browserType){
+            switch (browserType) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
@@ -59,10 +60,11 @@ public class Driver {
         return driver;
 
     }
-    public static void closeDriver(){
-        if (driver != null){
+
+    public static void closeDriver() {
+        if (driver != null) {
             driver.quit();
-            driver=null;
+            driver = null;
         }
     }
 }
