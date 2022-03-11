@@ -6,6 +6,7 @@ import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -17,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static com.vytrack.utilities.Driver.getDriver;
+
 public class US_60_EditCarInfo extends TestBase {
 
     Faker faker = new Faker();
@@ -26,9 +29,9 @@ public class US_60_EditCarInfo extends TestBase {
     @DataProvider(name = "US-60_Credentials")
     public Object[][] credentials() {
         return new Object[][]{
-                /* {"user" + faker.number().numberBetween(191, 197), "UserUser123"},*///user191 --- user197
-                {"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"}, //storemanager67  ---  storemanager72
-             /* {"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
+                 {"user" + faker.number().numberBetween(191, 197), "UserUser123"},//user191 --- user197
+               /*{"storemanager" + faker.number().numberBetween(67, 72), "UserUser123"},//storemanager67  ---  storemanager72
+               /*{"salesmanager" + faker.number().numberBetween(275, 278), "UserUser123"}*/}; //salesmanager275 --- salesmanager278
 
     }
 
@@ -51,10 +54,12 @@ public class US_60_EditCarInfo extends TestBase {
 
         int num = faker.number().numberBetween(1, dots.size());
 
-        actions.moveToElement(dots.get(num)).pause(1000).click().perform();
         js.executeScript("arguments[0].scrollIntoView(true);", dots.get(num));
+        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        actions.moveToElement(dots.get(num)).pause(1000).click(dots.get(num)).pause(2000).perform();
 
-        Driver.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 
         WebElement deleteBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[3]//a"));
         WebElement editBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[2]//a"));
@@ -71,38 +76,6 @@ public class US_60_EditCarInfo extends TestBase {
         Assert.assertEquals(delete, expectedDelete);
         Assert.assertEquals(edit, expectedEdit);
         Assert.assertEquals(view, expectedView);
-        /*List<String> expectedIconOptions = new ArrayList<>(Arrays.asList("View", "Edit", "Delete"));
-
-
-        for (String eachOption : expectedIconOptions) {
-            Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//div[@class='dropdown open']//li[@class='launcher-item']//a[@title='"
-                    + eachOption + "']")).isDisplayed());
-        }
-
-        /*for (WebElement dot : dots) {
-            js.executeScript("arguments[0].scrollIntoView(true);", dot);
-            BrowserUtils.sleep(5);
-            actions.moveToElement(dot).pause(1000).click().perform();
-
-            WebElement deleteBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[3]//a"));
-            WebElement editBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[2]//a"));
-            WebElement viewBtn = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']//li[1]//a"));
-
-            String delete = deleteBtn.getAttribute("title");
-            String edit = editBtn.getAttribute("title");
-            String view = viewBtn.getAttribute("title");
-
-            String expectedDelete = "Delete";
-            String expectedEdit = "Edit";
-            String expectedView = "View";
-
-            Assert.assertEquals(delete, expectedDelete);
-            Assert.assertEquals(edit, expectedEdit);
-            Assert.assertEquals(view, expectedView);
-
-
-        }*/
-
 
     }
 }
