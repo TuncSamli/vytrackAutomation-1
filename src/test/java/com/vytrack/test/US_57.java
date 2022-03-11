@@ -1,5 +1,4 @@
 package com.vytrack.test;
-
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
