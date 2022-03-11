@@ -10,7 +10,7 @@ import static com.vytrack.utilities.ConfigurationReader.getProperty;
 public class TestBase {
     @BeforeMethod
     public void setUp(){
-        Driver.getDriver().get(getProperty("env"));
+        System.out.println("Test started!");
     }
     @AfterMethod
     public void tearDown(){
