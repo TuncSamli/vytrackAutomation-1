@@ -22,36 +22,36 @@ public class VytrackUtils {
 
     public static void loginAsDriver() {
         //go to website
-        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
         // pass username
         // Driver.getDriver().findElement(By.cssSelector("#prependedInput"));
-        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("driver_username"));
+        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("usernameTruckDrivers1"));
         //pass password
-        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("driver_password"));
+        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("password"));
         //click login button
         Driver.getDriver().findElement(By.tagName("button")).click();
     }
 
     public static void loginAsStoreManager() {
         //go to website
-        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
         // pass username
         // Driver.getDriver().findElement(By.cssSelector("#prependedInput"));
-        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("store_manager_username"));
+        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("usernameStoreManager1"));
         //pass password
-        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("store_manager_password"));
+        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("password"));
         //click login button
         Driver.getDriver().findElement(By.tagName("button")).click();
     }
 
     public static void loginAsSalesManager() {
         //go to website
-        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
         // pass username
         // Driver.getDriver().findElement(By.cssSelector("#prependedInput"));
-        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("sales_manager_username"));
+        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("usernameSalesManager1"));
         //pass password
-        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("sales_manager_password"));
+        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("password"));
         //click login button
         Driver.getDriver().findElement(By.tagName("button")).click();
     }
